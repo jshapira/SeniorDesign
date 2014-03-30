@@ -20,8 +20,10 @@
 #include "Servo.h"
 
 int servoPin1 = 3;
+int servoPin2 = 6;
 int highPin = 5;
 Servo servo1;
+Servo servo2;
 
 int sleft = 0; 
 int sright = 180;
@@ -32,7 +34,7 @@ boolean incoming = 0;
 // The IP address will be dependent on your local network:
 byte mac[] = { 
    0x90, 0xA2, 0xDA, 0x0D, 0xEA, 0x42 };
-IPAddress ip(192,168,1,2);
+IPAddress ip(192,168,1,4);
 
 // Initialize the Ethernet server library
 // with the IP address and port you want to use 
@@ -44,9 +46,12 @@ void setup() {
   
   ////
   pinMode(servoPin1, OUTPUT); 
+  pinMode(servoPin2, OUTPUT);
   servo1.attach(servoPin1);
-  pinMode(highPin, OUTPUT);
-  digitalWrite(highPin, HIGH);
+  servo2.attach(servoPin2);
+  
+  //pinMode(highPin, OUTPUT);
+  //digitalWrite(highPin, HIGH);
   ////
   
   Serial.begin(9600);
@@ -94,13 +99,25 @@ void loop() {
             Serial.println("ON");
             // printing "ON" to your screen.
             servo1.write(sleft);
+           // servo2.write(sleft);
             // setting the 2nd pin state to HIGH (turning on the LED)
           }
           if(c == '2'){
             Serial.println("OFF");
             // printing "OFF" to your screen.
             servo1.write(sright);
+           // servo2.write(sright);
             // setting the our LED state to off (turning it off)
+          }
+          if(c == '3'){
+            Serial.println("FORWARD");
+            servo1.write(sleft);
+            servo2.write(sright); //FORWARD
+          }
+          if(c == '4'){
+            Serial.println("BACKWARD");
+            servo1.write(sright);
+            servo2.write(sleft);
           }
  
         }
