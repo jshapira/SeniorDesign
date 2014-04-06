@@ -28,7 +28,8 @@ char server[] = "www.google.com";    // name address for Google (using DNS)
 // Set the static IP address to use if the DHCP fails to assign
 //IPAddress ip(10,0,2,13);
 //IPAddress ip(192,168,0,177);
-IPAddress ip(192,168,1,4);
+//IPAddress ip(192,168,1,4);
+IPAddress ip(172,16,0,3);
 
 // Initialize the Ethernet client library
 // with the IP address and port of the server 

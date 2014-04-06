@@ -34,7 +34,8 @@ boolean incoming = 0;
 // The IP address will be dependent on your local network:
 byte mac[] = { 
    0x90, 0xA2, 0xDA, 0x0D, 0xEA, 0x42 };
-IPAddress ip(192,168,1,4);
+//IPAddress ip(192,168,1,4);
+IPAddress ip(172,16,0,5);
 
 // Initialize the Ethernet server library
 // with the IP address and port you want to use 
@@ -53,7 +54,8 @@ void setup() {
   //pinMode(highPin, OUTPUT);
   //digitalWrite(highPin, HIGH);
   ////
-  
+  servo1.write(sstop);
+  servo2.write(sstop);
   Serial.begin(9600);
    while (!Serial) {
     ; // wait for serial port to connect. Needed for Leonardo only
@@ -99,14 +101,14 @@ void loop() {
             Serial.println("ON");
             // printing "ON" to your screen.
             servo1.write(sleft);
-           // servo2.write(sleft);
+            servo2.write(sleft);
             // setting the 2nd pin state to HIGH (turning on the LED)
           }
           if(c == '2'){
             Serial.println("OFF");
             // printing "OFF" to your screen.
             servo1.write(sright);
-           // servo2.write(sright);
+            servo2.write(sright);
             // setting the our LED state to off (turning it off)
           }
           if(c == '3'){
@@ -118,6 +120,11 @@ void loop() {
             Serial.println("BACKWARD");
             servo1.write(sright);
             servo2.write(sleft);
+          }
+          if(c == '5'){
+            Serial.println("STOP");
+            servo1.write(sstop);
+            servo2.write(sstop);
           }
  
         }

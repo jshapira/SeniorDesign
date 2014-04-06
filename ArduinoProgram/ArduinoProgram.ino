@@ -1,3 +1,12 @@
+#include <Configuration.h>
+#include <Debug.h>
+#include <ParsedStream.h>
+#include <SpiUart.h>
+#include <WiFly.h>
+#include <WiFlyClient.h>
+#include <WiFlyDevice.h>
+#include <WiFlyServer.h>
+
 #include "Servo.h" // attach the indicated library in order to use the included functions 
  
 int servoPin1 = 3; // sets up variable for pin assignments 
